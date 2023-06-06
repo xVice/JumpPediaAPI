@@ -20,8 +20,6 @@ class Level(db.Model):
     founder = db.Column(db.String(100))
     line = db.Column(db.String(200))
     prover = db.Column(db.String(100))
-    likes = db.Column(db.Integer)
-    dislikes = db.Column(db.Integer)
 
     def to_dict(self):
         return {
@@ -34,8 +32,6 @@ class Level(db.Model):
             'founder': self.founder,
             'line': self.line,
             'prover': self.prover
-            'likes': self.likes
-            'dislikes': self.dislikes;
         }
 
 @app.route('/api/jumps', methods=['GET', 'POST'])
