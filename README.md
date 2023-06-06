@@ -73,3 +73,7 @@ This command will drop the existing tables, create new ones, and populate them w
 
 Note: Make sure you have the jump_data.json file in the project directory before running this command.
 
+You can also chain the commands:
+```
+python JumpPediaAPI.py updatedataset repopulate
+```
