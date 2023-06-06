@@ -34,7 +34,11 @@ if response.status_code == 200:
         df = pd.DataFrame(filtered_data)
         df.to_excel(excel_file_name, index=False)
 
-        print('Data exported successfully to:', json_file_name, 'and', excel_file_name)
+        # Export data to HTML file
+        html_file_name = 'filtered_data.html'
+        df.to_html(html_file_name, index=False)
+
+        print('Data exported successfully to:', json_file_name, ',', excel_file_name, ' and ', html_file_name)
     else:
         print('No results found based on the provided criteria.')
 else:

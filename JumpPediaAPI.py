@@ -20,6 +20,8 @@ class Level(db.Model):
     founder = db.Column(db.String(100))
     line = db.Column(db.String(200))
     prover = db.Column(db.String(100))
+    likes = db.Column(db.String())
+    dislikes = db.Column(db.String())
 
     def to_dict(self):
         return {
@@ -31,7 +33,9 @@ class Level(db.Model):
             'links': self.links.split(',') if self.links else [],
             'founder': self.founder,
             'line': self.line,
-            'prover': self.prover
+            'prover': self.prover,
+            'likes': self.likes,
+            'dislikes': self.dislikes
         }
 
 @app.route('/api/jumps', methods=['GET', 'POST'])
@@ -86,15 +90,33 @@ def update_dataset():
             f.write(str(visible_text))  
         
         print('Dataset updated successfully.')
+        
+        updatejsonstructure()
     
     else:
         print('Failed to update dataset.')
+
+def updatejsonstructure():
+    print('Updating json structure\n')
+    with open('jump_data.json', 'r') as file:
+        data = json.load(file)
+        
+        for item_key, item_value in data.items():
+            # Add 'likes' and 'dislikes' fields with default values of 0
+            item_value['likes'] = "0"
+            item_value['dislikes'] = "0"
+            
+        with open('jump_data.json', 'w') as file:
+            json.dump(data, file, indent=4)
 
 if __name__ == '__main__':
     with app.app_context():
         if len(sys.argv) > 1 and sys.argv[1] == 'updatedataset':
             # Update the dataset
             update_dataset()
+
+        if 'updatejsonstructure' in sys.argv:
+            updatejsonstructure()
 
         if 'repopulate' in sys.argv:
             # Repopulate the database
@@ -113,7 +135,9 @@ if __name__ == '__main__':
                         links=links_str,
                         founder=item_value.get('founder'),
                         line=item_value.get('line'),
-                        prover=item_value.get('prover')
+                        prover=item_value.get('prover'),
+                        likes=item_value.get('likes'),
+                        dislikes=item_value.get('dislikes')
                     )
                     db.session.add(level)
                 db.session.commit()
