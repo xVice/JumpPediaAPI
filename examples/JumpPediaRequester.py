@@ -1,6 +1,7 @@
 import requests
 import sys
-from tabulate import tabulate
+import json
+import pandas as pd
 
 # API endpoint URL
 url = 'http://localhost:5000/api/jumps'
@@ -23,14 +24,17 @@ if response.status_code == 200:
     filtered_data = response.json()
 
     if len(filtered_data) > 0:
-        # Format the data in a table
-        table = []
-        headers = filtered_data[0].keys()
-        for level in filtered_data:
-            table.append(list(level.values()))
+        # Export data to JSON file
+        json_file_name = 'filtered_data.json'
+        with open(json_file_name, 'w') as json_file:
+            json.dump(filtered_data, json_file)
 
-        # Print the table
-        print(tabulate(table, headers, tablefmt="grid"))
+        # Export data to Excel file
+        excel_file_name = 'filtered_data.xlsx'
+        df = pd.DataFrame(filtered_data)
+        df.to_excel(excel_file_name, index=False)
+
+        print('Data exported successfully to:', json_file_name, 'and', excel_file_name)
     else:
         print('No results found based on the provided criteria.')
 else:

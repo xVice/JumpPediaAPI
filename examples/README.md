@@ -11,10 +11,11 @@ python JumpPediaRequester.py diff="7/10" location="Metro Kingdom"
 ```
 The script will send a POST request to the API endpoint with the provided criteria as a JSON payload. It will then retrieve the filtered data from the response and display it in a table format using the tabulate library.
 
-If the request is successful and the response status code is 200, the script will print the filtered data as a table. If any error occurs during the request, it will print an error message along with the error text from the response.
+If the request is successful and the response status code is 200, the script will save the filtered data to filtered_data.json and filtered_data.xlsx. If any error occurs during the request, it will print an error message along with the error text from the response.
 
-Please note that for this script to work, you need to have the requests library and tabulate library installed in your Python environment. You can install them using the following two commands:
+Please note that for this script to work, you need to have the requests, pandas and openpyxl librarys installed in your Python environment. You can install them using the following commands:
 ```
 pip install requests
-pip install tabulate
+pip install pandas
+pip install openpyxl
 ```
