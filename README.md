@@ -77,3 +77,7 @@ You can also chain the commands:
 ```
 python JumpPediaAPI.py updatedataset repopulate
 ```
+
+### Example script
+Headover to the examples directory and look at the script to get a understanding of how the apis work
+[ExamplesURL](https://github.com/xVice/JumpPediaAPI/tree/master/examples)
