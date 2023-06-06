@@ -13,7 +13,7 @@ The script will send a POST request to the API endpoint with the provided criter
 
 If the request is successful and the response status code is 200, the script will print the filtered data as a table. If any error occurs during the request, it will print an error message along with the error text from the response.
 
-Please note that for this script to work, you need to have the requests library and tabulate library installed in your Python environment. You can install them using the following commands:
+Please note that for this script to work, you need to have the requests library and tabulate library installed in your Python environment. You can install them using the following two commands:
 ```
 pip install requests
 pip install tabulate

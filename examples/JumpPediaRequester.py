@@ -5,7 +5,6 @@ from tabulate import tabulate
 # API endpoint URL
 url = 'http://localhost:5000/api/jumps'
 
-# Define the criteria for filtering the levels
 criteria = {}
 
 # Check if criteria are provided in the command line
