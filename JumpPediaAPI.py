@@ -145,4 +145,4 @@ if __name__ == '__main__':
         
         else:
             db.create_all()
-    app.run()
+    app.run(threaded=True)
