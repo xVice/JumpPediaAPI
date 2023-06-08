@@ -75,4 +75,4 @@ def create_table_image(table):
 
     return buffer
 
-bot.run('MTExNjM0NDc3MzAwODE2MjkxNg.GNNdDE.-YERyKMYsGFmImnBIn2lvRWGCx8WE5jZchOPvs')
+bot.run('BOTKEY')
